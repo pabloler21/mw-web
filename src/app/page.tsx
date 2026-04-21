@@ -1,6 +1,7 @@
 import Hero from '@/components/sections/Hero'
 import Ecosistema from '@/components/sections/Ecosistema'
 import Portfolio from '@/components/sections/Portfolio'
+import CTABlock from '@/components/sections/CTABlock'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Ecosistema />
       <Portfolio />
+      <CTABlock />
     </main>
   )
 }
