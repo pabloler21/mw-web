@@ -14,6 +14,13 @@ export const NAV_LINKS = [
 
 export const CALENDLY_URL = 'https://calendly.com/TO_BE_CONFIGURED'
 
+export const SOCIAL_LINKS = {
+  instagram: 'https://www.instagram.com/mwgloballink',
+  linkedin:  'https://www.linkedin.com/company/TO_BE_CONFIGURED',
+}
+
+export const CONTACT_EMAIL = 'contacto@mwgloballink.com'
+
 export const PRODUCTS = [
   { id: 'aceite-oliva', label: 'Aceite de Oliva' },
   { id: 'alfalfa', label: 'Alfalfa' },
