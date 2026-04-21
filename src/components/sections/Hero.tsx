@@ -81,7 +81,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.a
+        href="#ecosistema"
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -93,7 +94,7 @@ export default function Hero() {
           animate={{ scaleY: [1, 0.4, 1], opacity: [1, 0.4, 1] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         />
-      </motion.div>
+      </motion.a>
 
     </section>
   )
