@@ -22,10 +22,36 @@ export const SOCIAL_LINKS = {
 export const CONTACT_EMAIL = 'contacto@mwgloballink.com'
 
 export const PRODUCTS = [
-  { id: 'aceite-oliva', label: 'Aceite de Oliva' },
-  { id: 'alfalfa', label: 'Alfalfa' },
-  { id: 'garbanzo', label: 'Garbanzo' },
-  { id: 'otros', label: 'Otros' },
+  {
+    id: 'fibras-bioenergia',
+    label: 'Fibras & Bioenergía',
+    description: 'Alfalfa y Pellets con estandarización internacional.',
+  },
+  {
+    id: 'gourmet-infusiones',
+    label: 'Gourmet & Infusiones',
+    description: 'Aceites de Oliva extra virgen y blends de té premium.',
+  },
+  {
+    id: 'ciencia-belleza',
+    label: 'Ciencia y Belleza',
+    description: 'Cosmética avanzada y bioinsumos.',
+  },
+  {
+    id: 'real-estate',
+    label: 'Bienes de Capital',
+    description: 'Oportunidades de inversión en desarrollos inmobiliarios.',
+  },
+  {
+    id: 'cumplimiento-global',
+    label: 'Cumplimiento Global',
+    description: 'Servicios de Aduana, Certificaciones Internacionales e IMO Operator.',
+  },
+  {
+    id: 'tecnologia-innovacion',
+    label: 'Tecnología e Innovación',
+    description: 'Implementación de soluciones digitales, automatización comercial e inteligencia artificial aplicada al negocio.',
+  },
 ]
 
 // PLACEHOLDER — reemplazar con datos reales del equipo (nombres, fotos, bios)
