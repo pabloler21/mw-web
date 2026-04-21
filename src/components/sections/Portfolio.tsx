@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionWrapper from '@/components/layout/SectionWrapper'
+import LeadModal from '@/components/ui/LeadModal'
 import { PRODUCTS } from '@/lib/constants'
 
 const cardVariants = {
@@ -58,9 +60,12 @@ function ProductCard({ product, index, onConsult }: ProductCardProps) {
 }
 
 export default function Portfolio() {
-  // PLACEHOLDER — cuando LEAD-1 esté implementado, abrir el modal con el producto pre-seleccionado
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<string | undefined>(undefined)
+
   const handleConsult = (productId: string) => {
-    console.log('Consultar producto:', productId)
+    setSelectedProduct(productId)
+    setModalOpen(true)
   }
 
   return (
@@ -91,6 +96,12 @@ export default function Portfolio() {
           />
         ))}
       </div>
+
+      <LeadModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        productId={selectedProduct}
+      />
 
     </SectionWrapper>
   )
