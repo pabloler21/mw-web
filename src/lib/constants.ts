@@ -5,10 +5,14 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mwgloballin
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export const NAV_LINKS = [
-  { label: 'Ecosistema', href: '#ecosistema' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Ecosistema',       href: '#ecosistema'       },
+  { label: 'Portfolio',        href: '#portfolio'        },
+  { label: 'Intelligence Hub', href: '#intelligence-hub' },
+  { label: 'Global Network',   href: '#global-network'   },
+  { label: 'Insights',         href: '#insights'         },
 ]
+
+export const CALENDLY_URL = 'https://calendly.com/TO_BE_CONFIGURED'
 
 export const PRODUCTS = [
   { id: 'aceite-oliva', label: 'Aceite de Oliva' },
