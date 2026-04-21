@@ -27,3 +27,50 @@ export const PRODUCTS = [
   { id: 'garbanzo', label: 'Garbanzo' },
   { id: 'otros', label: 'Otros' },
 ]
+
+// PLACEHOLDER — reemplazar con datos reales del equipo (nombres, fotos, bios)
+export const TEAM_MEMBERS = [
+  {
+    id: 'ceo',
+    role: 'CEO & Founder',
+    description: 'Estrategia transnacional y cierre de negocios',
+    name: 'Nombre Apellido',
+    initials: 'NA',
+  },
+  {
+    id: 'intelligence',
+    role: 'Intelligence & Geopolitics',
+    description: 'Análisis de riesgo y detección de oportunidades',
+    name: 'Nombre Apellido',
+    initials: 'NA',
+  },
+  {
+    id: 'tech',
+    role: 'AI & Tech Infrastructure',
+    description: 'Arquitectura de datos y agentes autónomos',
+    name: 'Nombre Apellido',
+    initials: 'NA',
+  },
+  {
+    id: 'art',
+    role: 'Art & Brand Essence',
+    description: 'Comunicación visual de élite',
+    name: 'Nombre Apellido',
+    initials: 'NA',
+  },
+  {
+    id: 'vanguardia',
+    role: 'Vanguardia & Futuro',
+    description: 'Strategic Aerospace & Environmental Intelligence',
+    name: 'Nombre Apellido',
+    initials: 'NA',
+  },
+]
+
+// PLACEHOLDER — reemplazar con logos reales de aliados/partners
+export const ALLIANCE_LOGOS = [
+  { id: 'partner-1', name: 'Partner 1' },
+  { id: 'partner-2', name: 'Partner 2' },
+  { id: 'partner-3', name: 'Partner 3' },
+  { id: 'partner-4', name: 'Partner 4' },
+]
