@@ -89,10 +89,22 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        {/* Preconnects para recursos externos */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://assets.calendly.com" />
+
+        {/* Calendly CSS — carga async para no bloquear el render */}
         <link
+          rel="preload"
           href="https://assets.calendly.com/assets/external/widget.css"
-          rel="stylesheet"
+          as="style"
+          onLoad={"this.onload=null;this.rel='stylesheet'" as unknown as React.ReactEventHandler<HTMLLinkElement>}
         />
+        <noscript>
+          <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        </noscript>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

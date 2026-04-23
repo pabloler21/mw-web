@@ -3,6 +3,11 @@
 import { motion } from 'framer-motion'
 import { CALENDLY_URL } from '@/lib/constants'
 
+function openCalendly() {
+  window.plausible?.('cta_calendly_click')
+  window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
+}
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -62,14 +67,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
         >
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openCalendly}
             className="px-8 py-3 bg-accent text-surface-primary font-body text-sm uppercase tracking-widest hover:bg-accent/90 transition-colors duration-200 rounded-sm"
           >
             Agendar Estrategia
-          </a>
+          </button>
           <a
             href="#ecosistema"
             className="px-8 py-3 border border-surface-elevated text-text-secondary font-body text-sm uppercase tracking-widest hover:border-accent hover:text-accent transition-colors duration-200 rounded-sm"
