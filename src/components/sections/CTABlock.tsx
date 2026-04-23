@@ -3,6 +3,11 @@
 import { motion } from 'framer-motion'
 import { CALENDLY_URL } from '@/lib/constants'
 
+function openCalendly() {
+  window.plausible?.('cta_calendly_click')
+  window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
+}
+
 export default function CTABlock() {
   return (
     <section className="relative overflow-hidden bg-surface-secondary border-y border-surface-elevated">
@@ -44,14 +49,12 @@ export default function CTABlock() {
           <p className="font-body text-base text-text-secondary leading-relaxed text-center">
             Agendá una sesión estratégica con nuestro equipo.
           </p>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full px-10 py-4 bg-accent text-surface-primary font-body text-sm uppercase tracking-widest hover:bg-accent/90 transition-colors duration-200 rounded-sm text-center"
+          <button
+            onClick={openCalendly}
+            className="w-full px-10 py-4 bg-accent text-surface-primary font-body text-sm uppercase tracking-widest hover:bg-accent/90 transition-colors duration-200 rounded-sm"
           >
             Agendar Estrategia
-          </a>
+          </button>
         </motion.div>
 
       </div>

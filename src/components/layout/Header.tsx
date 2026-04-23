@@ -4,6 +4,18 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS, CALENDLY_URL } from '@/lib/constants'
 
+declare global {
+  interface Window {
+    Calendly?: { initPopupWidget: (opts: { url: string }) => void }
+    plausible?: (event: string) => void
+  }
+}
+
+function openCalendly() {
+  window.plausible?.('cta_calendly_click')
+  window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -49,14 +61,12 @@ export default function Header() {
 
           {/* CTA + hamburger */}
           <div className="flex items-center gap-4">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={openCalendly}
               className="hidden md:inline-flex items-center px-5 py-2 border border-accent text-accent font-body text-xs uppercase tracking-widest hover:bg-accent hover:text-surface-primary transition-colors duration-200 rounded-sm"
             >
               Agendar Estrategia
-            </a>
+            </button>
 
             {/* Hamburger */}
             <button
@@ -114,15 +124,12 @@ export default function Header() {
               </a>
             ))}
 
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleNavClick}
+            <button
+              onClick={() => { handleNavClick(); openCalendly() }}
               className="mt-4 px-8 py-3 border border-accent text-accent font-body text-sm uppercase tracking-widest hover:bg-accent hover:text-surface-primary transition-colors rounded-sm"
             >
               Agendar Estrategia
-            </a>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
