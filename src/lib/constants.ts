@@ -65,21 +65,21 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 'intelligence',
-    role: 'Intelligence & Geopolitics',
+    role: 'Inteligencia & Geopolítica',
     description: 'Análisis de riesgo y detección de oportunidades',
     name: 'Nombre Apellido',
     initials: 'NA',
   },
   {
     id: 'tech',
-    role: 'AI & Tech Infrastructure',
+    role: 'IA & Infraestructura Tecnológica',
     description: 'Arquitectura de datos y agentes autónomos',
     name: 'Nombre Apellido',
     initials: 'NA',
   },
   {
     id: 'art',
-    role: 'Art & Brand Essence',
+    role: 'Arte & Esencia de Marca',
     description: 'Comunicación visual de élite',
     name: 'Nombre Apellido',
     initials: 'NA',
@@ -87,7 +87,7 @@ export const TEAM_MEMBERS = [
   {
     id: 'vanguardia',
     role: 'Vanguardia & Futuro',
-    description: 'Strategic Aerospace & Environmental Intelligence',
+    description: 'Inteligencia Aeroespacial y Medioambiental Estratégica',
     name: 'Nombre Apellido',
     initials: 'NA',
   },
