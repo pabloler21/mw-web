@@ -44,7 +44,7 @@ export default function Footer() {
             MW Global Link
           </span>
           <p className="font-body text-sm text-text-secondary leading-relaxed max-w-xs">
-            Argentine agro-industrial exports connecting producers with global markets.
+            Exportaciones agroindustriales argentinas conectando productores con mercados globales.
           </p>
         </div>
 
