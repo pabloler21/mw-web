@@ -3,6 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { PRODUCTS } from '@/lib/constants'
 
+declare global {
+  interface Window {
+    plausible?: (event: string) => void
+  }
+}
+
 interface LeadModalProps {
   isOpen: boolean
   onClose: () => void
@@ -46,6 +52,8 @@ export default function LeadModal({ isOpen, onClose, productId }: LeadModalProps
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const firstFocusableRef = useRef<HTMLInputElement>(null)
 
@@ -101,16 +109,42 @@ export default function LeadModal({ isOpen, onClose, productId }: LeadModalProps
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const errs = validate(form)
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
       return
     }
-    // TODO: conectar con POST /api/leads (backend LEAD-2)
-    console.log('Lead submitted:', form)
-    setSubmitted(true)
+
+    setIsLoading(true)
+    setSubmitError(null)
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/leads`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          destination_port: form.port,
+          product: form.product,
+        }),
+      })
+
+      if (!res.ok) {
+        setSubmitError('Ocurrió un error. Por favor intentá nuevamente.')
+        return
+      }
+
+      window.plausible?.('lead_form_submitted')
+      setSubmitted(true)
+    } catch {
+      setSubmitError('No se pudo enviar. Intente nuevamente.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   if (!isOpen) return null
@@ -247,11 +281,35 @@ export default function LeadModal({ isOpen, onClose, productId }: LeadModalProps
               </select>
             </Field>
 
+            {submitError && (
+              <div className="flex items-center justify-between gap-3 px-4 py-3 border border-red-400/30 rounded-sm bg-red-400/5">
+                <p className="font-body text-xs text-red-400">{submitError}</p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitError(null)}
+                  className="font-body text-xs text-red-400 underline underline-offset-2 whitespace-nowrap"
+                >
+                  Reintentar
+                </button>
+              </div>
+            )}
+
             <button
               type="submit"
-              className="mt-2 w-full px-6 py-3 bg-accent text-surface-primary font-body text-sm uppercase tracking-widest hover:bg-accent/90 transition-colors duration-200 rounded-sm"
+              disabled={isLoading}
+              className="mt-2 w-full px-6 py-3 bg-accent text-surface-primary font-body text-sm uppercase tracking-widest hover:bg-accent/90 transition-colors duration-200 rounded-sm disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Enviar consulta
+              {isLoading ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z" />
+                  </svg>
+                  Enviando...
+                </>
+              ) : (
+                'Enviar consulta'
+              )}
             </button>
 
           </form>

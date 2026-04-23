@@ -12,7 +12,7 @@ export const NAV_LINKS = [
   { label: 'Insights',         href: '#insights'         },
 ]
 
-export const CALENDLY_URL = 'https://calendly.com/TO_BE_CONFIGURED'
+export const CALENDLY_URL = 'https://calendly.com/contacto-mwgloballink/30min?background_color=0a0a0f&text_color=e8e6e1&primary_color=c9a84c'
 
 export const SOCIAL_LINKS = {
   instagram: 'https://www.instagram.com/mwgloballink',
