@@ -2,19 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { NAV_LINKS, CALENDLY_URL } from '@/lib/constants'
-
-declare global {
-  interface Window {
-    Calendly?: { initPopupWidget: (opts: { url: string }) => void }
-    plausible?: (event: string) => void
-  }
-}
-
-function openCalendly() {
-  window.plausible?.('cta_calendly_click')
-  window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
-}
+import { NAV_LINKS } from '@/lib/constants'
+import { openCalendly } from '@/lib/calendly'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)

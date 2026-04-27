@@ -1,12 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CALENDLY_URL } from '@/lib/constants'
-
-function openCalendly() {
-  window.plausible?.('cta_calendly_click')
-  window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
-}
+import { openCalendly } from '@/lib/calendly'
 
 export default function CTABlock() {
   return (

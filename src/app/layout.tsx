@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, DM_Sans } from "next/font/google";
-import Script from "next/script";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
@@ -78,7 +77,7 @@ const jsonLd = {
     areaServed: "Worldwide",
     availableLanguage: ["Spanish", "English"],
   },
-  sameAs: ["https://www.linkedin.com/company/TO_BE_CONFIGURED"],
+  sameAs: ["https://www.linkedin.com/company/mwgloballink"],
 };
 
 export default function RootLayout({
@@ -92,19 +91,6 @@ export default function RootLayout({
         {/* Preconnects para recursos externos */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://assets.calendly.com" />
-
-        {/* Calendly CSS — carga async para no bloquear el render */}
-        <link
-          rel="preload"
-          href="https://assets.calendly.com/assets/external/widget.css"
-          as="style"
-          onLoad={"this.onload=null;this.rel='stylesheet'" as unknown as React.ReactEventHandler<HTMLLinkElement>}
-        />
-        <noscript>
-          <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-        </noscript>
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -114,10 +100,6 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

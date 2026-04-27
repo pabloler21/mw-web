@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import LeadModal from '@/components/ui/LeadModal'
@@ -32,12 +33,23 @@ function ProductCard({ product, index, onConsult }: ProductCardProps) {
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="group bg-surface-secondary border border-surface-elevated hover:border-accent/40 rounded-sm flex flex-col overflow-hidden transition-colors duration-300"
     >
-      {/* Image placeholder */}
-      <div className="h-44 bg-surface-elevated flex items-center justify-center border-b border-surface-elevated group-hover:border-accent/20 transition-colors duration-300">
-        {/* PLACEHOLDER — reemplazar con <Image> del producto */}
-        <span className="font-body text-xs uppercase tracking-widest text-text-secondary opacity-40">
-          Imagen
-        </span>
+      {/* Product image */}
+      <div className="relative h-44 bg-surface-elevated border-b border-surface-elevated group-hover:border-accent/20 transition-colors duration-300 overflow-hidden">
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.label}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          />
+        ) : (
+          <div className="h-full flex items-center justify-center">
+            <span className="font-body text-xs uppercase tracking-widest text-text-secondary opacity-40">
+              Imagen próximamente
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Content */}
