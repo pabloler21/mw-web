@@ -1,12 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CALENDLY_URL } from '@/lib/constants'
-
-function openCalendly() {
-  window.plausible?.('cta_calendly_click')
-  window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
-}
+import { openCalendly } from '@/lib/calendly'
 
 export default function Hero() {
   return (
@@ -86,17 +81,25 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.a
         href="#ecosistema"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1 }}
+        aria-label="Scroll hacia abajo"
       >
-        <span className="font-body text-xs uppercase tracking-widest text-text-secondary">Scroll</span>
-        <motion.div
-          className="w-px h-10 bg-gradient-to-b from-accent/60 to-transparent"
-          animate={{ scaleY: [1, 0.4, 1], opacity: [1, 0.4, 1] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        />
+        {[0, 1, 2].map((i) => (
+          <motion.svg
+            key={i}
+            width="20"
+            height="12"
+            viewBox="0 0 20 12"
+            fill="none"
+            animate={{ opacity: [0.2, 1, 0.2] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+          >
+            <path d="M1 1L10 10L19 1" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+        ))}
       </motion.a>
 
     </section>

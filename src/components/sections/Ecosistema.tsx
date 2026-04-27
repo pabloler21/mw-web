@@ -32,7 +32,7 @@ export default function Ecosistema() {
       </motion.div>
 
       {/* Team grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+      <div className="flex flex-wrap justify-center gap-6 mb-20">
         {TEAM_MEMBERS.map((member, i) => (
           <motion.div
             key={member.id}
@@ -41,7 +41,7 @@ export default function Ecosistema() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-surface-secondary border border-surface-elevated rounded-sm p-6 flex flex-col gap-4"
+            className="bg-surface-secondary border border-surface-elevated rounded-sm p-6 flex flex-col gap-4 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
           >
             {/* Avatar placeholder */}
             <div className="w-14 h-14 rounded-full bg-surface-elevated border border-accent/20 flex items-center justify-center">
