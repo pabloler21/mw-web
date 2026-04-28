@@ -80,10 +80,27 @@ export default function LeadModal({ isOpen, onClose, productId }: LeadModalProps
     return () => document.removeEventListener('keydown', onKey)
   }, [isOpen, onClose])
 
-  // Prevent body scroll when open
+  // Prevent body scroll when open — position:fixed approach works on iOS Safari
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (isOpen) {
+      const y = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${y}px`
+      document.body.style.width = '100%'
+    } else {
+      const top = document.body.style.top
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      if (top) window.scrollTo(0, parseInt(top) * -1)
+    }
+    return () => {
+      const top = document.body.style.top
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      if (top) window.scrollTo(0, parseInt(top) * -1)
+    }
   }, [isOpen])
 
   // Focus trap
@@ -180,7 +197,7 @@ export default function LeadModal({ isOpen, onClose, productId }: LeadModalProps
           <button
             onClick={onClose}
             aria-label="Cerrar modal"
-            className="text-text-secondary hover:text-text-primary transition-colors mt-1"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] text-text-secondary hover:text-text-primary transition-colors -mr-2"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M18 6 6 18M6 6l12 12" />

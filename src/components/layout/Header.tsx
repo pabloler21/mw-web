@@ -59,7 +59,7 @@ export default function Header() {
 
             {/* Hamburger */}
             <button
-              className="md:hidden flex flex-col gap-1.5 p-1"
+              className="md:hidden flex flex-col gap-1.5 min-w-[44px] min-h-[44px] items-center justify-center"
               onClick={() => setMenuOpen((v) => !v)}
               aria-label="Toggle menu"
             >

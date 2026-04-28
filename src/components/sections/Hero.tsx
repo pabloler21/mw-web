@@ -5,7 +5,7 @@ import { openCalendly } from '@/lib/calendly'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-svh flex flex-col items-center justify-center overflow-hidden">
 
       {/* Background gradient (placeholder — replace with stock image) */}
       <div
