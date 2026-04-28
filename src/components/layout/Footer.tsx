@@ -79,7 +79,7 @@ export default function Footer() {
               href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent transition-colors duration-200"
+              className="flex items-center justify-center min-w-[44px] min-h-[44px] text-text-secondary hover:text-accent transition-colors duration-200"
               aria-label="Instagram"
             >
               <InstagramIcon />
@@ -88,7 +88,7 @@ export default function Footer() {
               href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent transition-colors duration-200"
+              className="flex items-center justify-center min-w-[44px] min-h-[44px] text-text-secondary hover:text-accent transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <LinkedInIcon />

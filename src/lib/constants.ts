@@ -5,11 +5,8 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mwgloballin
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export const NAV_LINKS = [
-  { label: 'Ecosistema',       href: '#ecosistema'       },
-  { label: 'Portfolio',        href: '#portfolio'        },
-  { label: 'Intelligence Hub', href: '#intelligence-hub' },
-  { label: 'Global Network',   href: '#global-network'   },
-  { label: 'Insights',         href: '#insights'         },
+  { label: 'Ecosistema', href: '#ecosistema' },
+  { label: 'Portfolio',  href: '#portfolio'  },
 ]
 
 export const CALENDLY_URL = 'https://calendly.com/contacto-mwgloballink/30min?background_color=0a0a0f&text_color=e8e6e1&primary_color=c9a84c'

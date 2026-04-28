@@ -19,3 +19,9 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-body), sans-serif;
 }
+
+/* Fixes iOS Safari 100vh including browser chrome */
+.min-h-svh {
+  min-height: 100vh;
+  min-height: 100svh;
+}
